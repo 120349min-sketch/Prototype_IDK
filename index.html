@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แผ่นใสซ้อนทับดิจิทัล (Digital Fraction Overlay)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen p-4 md:p-8">
+
+    <div class="max-w-7xl mx-auto space-y-6">
+        
+        <!-- Header -->
+        <header class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div class="flex items-center gap-4">
+                <div class="bg-purple-600 text-white p-3 rounded-xl shadow-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v5zM14 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-5z" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold text-slate-900">แผ่นใสซ้อนทับดิจิทัล (Digital Fraction Overlay)</h1>
+                    <p class="text-sm text-slate-500">นวัตกรรมการเรียนรู้การบวกเศษส่วนสำหรับ ชั้น ป.5</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-wrap gap-2">
+                <button class="bg-purple-50 text-purple-700 hover:bg-purple-100 px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                    ห้องทดลองแผ่นใส
+                </button>
+                <button class="bg-slate-100 text-slate-600 hover:bg-slate-200 px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                    ลำดับการสอน 4 ขั้น
+                </button>
+                <button class="bg-slate-100 text-slate-600 hover:bg-slate-200 px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/></svg>
+                    แบบฝึกหัด
+                </button>
+            </div>
+        </header>
+
+        <!-- Control Panel -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- แผ่นใสที่ 1 -->
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 space-y-4">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-bold text-rose-600 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                        แผ่นใสที่ 1 (แนวตั้ง):
+                    </h3>
+                    <span id="label-fraction-1" class="text-lg font-bold text-rose-600">1/2</span>
+                </div>
+                <div class="space-y-3 text-sm">
+                    <div>
+                        <div class="flex justify-between text-slate-500 mb-1">
+                            <span>ตัวเศษ (ระบายสี):</span>
+                            <span id="val-num-1" class="font-semibold text-slate-700">1</span>
+                        </div>
+                        <input type="range" id="num-1" min="1" max="4" value="1" class="w-full accent-rose-500 cursor-pointer">
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-slate-500 mb-1">
+                            <span>ตัวส่วน (แบ่งช่อง):</span>
+                            <span id="val-den-1" class="font-semibold text-slate-700">2</span>
+                        </div>
+                        <input type="range" id="den-1" min="1" max="5" value="2" class="w-full accent-rose-500 cursor-pointer">
+                    </div>
+                </div>
+            </div>
+
+            <!-- แผ่นใสที่ 2 -->
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 space-y-4">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-bold text-blue-600 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-500 inline-block"></span>
+                        แผ่นใสที่ 2 (แนวนอน):
+                    </h3>
+                    <span id="label-fraction-2" class="text-lg font-bold text-blue-600">1/3</span>
+                </div>
+                <div class="space-y-3 text-sm">
+                    <div>
+                        <div class="flex justify-between text-slate-500 mb-1">
+                            <span>ตัวเศษ (ระบายสี):</span>
+                            <span id="val-num-2" class="font-semibold text-slate-700">1</span>
+                        </div>
+                        <input type="range" id="num-2" min="1" max="4" value="1" class="w-full accent-blue-500 cursor-pointer">
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-slate-500 mb-1">
+                            <span>ตัวส่วน (แบ่งช่อง):</span>
+                            <span id="val-den-2" class="font-semibold text-slate-700">3</span>
+                        </div>
+                        <input type="range" id="den-2" min="1" max="5" value="3" class="w-full accent-blue-500 cursor-pointer">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ปุ่มซ้อนทับ -->
+            <div class="bg-purple-600 rounded-2xl p-5 shadow-md text-white flex flex-col justify-between">
+                <div class="flex items-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+                    </svg>
+                    <h3 class="font-bold text-lg">ซ้อนแผ่นใสทับกัน (Overlay)</h3>
+                </div>
+                <div class="flex items-center justify-between mt-4 bg-purple-700/50 p-3 rounded-xl">
+                    <span class="text-sm font-medium">แสดงตัวเลขในช่อง:</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="toggle-numbers" checked class="sr-only peer">
+                        <div class="w-11 h-6 bg-purple-900 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-white peer-checked:after:bg-purple-600"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visual Display Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- แสดงแผ่นที่ 1 -->
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex flex-col items-center">
+                <div class="w-full flex justify-between items-center mb-4">
+                    <span class="font-bold text-slate-700 text-sm flex items-center gap-1.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                        แผ่นที่ 1 (แนวตั้ง)
+                    </span>
+                    <span id="badge-frac-1" class="bg-rose-50 text-rose-600 text-xs font-bold px-2.5 py-1 rounded-lg">1/2</span>
+                </div>
+                <!-- Box Render 1 -->
+                <div id="container-1" class="w-64 h-64 border-2 border-slate-800 rounded-xl relative overflow-hidden flex bg-white shadow-inner"></div>
+                <p id="desc-1" class="text-xs text-slate-500 mt-4 text-center">แบ่งเป็น 2 ช่องแนวตั้ง ระบายสี 1 ช่อง</p>
+            </div>
+
+            <!-- แสดงแผ่นที่ 2 -->
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex flex-col items-center">
+                <div class="w-full flex justify-between items-center mb-4">
+                    <span class="font-bold text-slate-700 text-sm flex items-center gap-1.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                        แผ่นที่ 2 (แนวนอน)
+                    </span>
+                    <span id="badge-frac-2" class="bg-blue-50 text-blue-600 text-xs font-bold px-2.5 py-1 rounded-lg">1/3</span>
+                </div>
+                <!-- Box Render 2 -->
+                <div id="container-2" class="w-64 h-64 border-2 border-slate-800 rounded-xl relative overflow-hidden flex flex-col bg-white shadow-inner"></div>
+                <p id="desc-2" class="text-xs text-slate-500 mt-4 text-center">แบ่งเป็น 3 ช่องแนวนอน ระบายสี 1 ช่อง</p>
+            </div>
+
+            <!-- ผลลัพธ์หลังซ้อนทับ -->
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex flex-col items-center">
+                <div class="w-full flex justify-between items-center mb-4">
+                    <span class="font-bold text-slate-700 text-sm flex items-center gap-1.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        ผลลัพธ์หลังซ้อนทับ
+                    </span>
+                    <span id="badge-status" class="bg-slate-100 text-slate-600 text-xs font-bold px-2.5 py-1 rounded-lg">ซ้อนทับกันแล้ว</span>
+                </div>
+                <!-- Box Render Overlay -->
+                <div id="container-overlay" class="w-64 h-64 border-2 border-slate-800 rounded-xl relative overflow-hidden bg-white shadow-inner flex flex-col"></div>
+                <p id="desc-overlay" class="text-xs text-purple-600 font-medium mt-4 text-center">ตารางรวมทั้งหมด <span id="total-grid-cells">6</span> ช่อง | พื้นที่ซ้อนทับ <span id="total-overlap-cells">1</span> ช่อง</p>
+            </div>
+        </div>
+
+        <!-- Mathematical Breakdown -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 space-y-4">
+            <h3 class="font-bold text-slate-900 flex items-center gap-2 text-base">
+                <span class="text-amber-500">💡</span> ถอดรหัสทางคณิตศาสตร์ (Mathematical Breakdown)
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2">
+                    <span class="text-xs text-slate-500 font-medium">1. แปลงแผ่นใสที่ 1 (แนวตั้ง):</span>
+                    <div id="breakdown-1" class="text-lg font-bold text-rose-600">1/2 = (1×3) / (2×3) = 3/6</div>
+                    <p id="breakdown-desc-1" class="text-xs text-slate-500">ถูกแบ่งย่อยด้วยเส้นแนวนอน 3 เส้น</p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2">
+                    <span class="text-xs text-slate-500 font-medium">2. แปลงแผ่นใสที่ 2 (แนวนอน):</span>
+                    <div id="breakdown-2" class="text-lg font-bold text-blue-600">1/3 = (1×2) / (3×2) = 2/6</div>
+                    <p id="breakdown-desc-2" class="text-xs text-slate-500">ถูกแบ่งย่อยด้วยเส้นแนวตั้ง 2 เส้น</p>
+                </div>
+                <div class="bg-purple-50/60 p-4 rounded-xl border border-purple-100 space-y-2">
+                    <span class="text-xs text-purple-700 font-medium">3. รวมชิ้นส่วนที่เท่ากัน:</span>
+                    <div id="breakdown-3" class="text-lg font-bold text-purple-700">3/6 + 2/6 = 5/6</div>
+                    <p class="text-xs text-purple-600 font-medium">ขนาดช่องเท่ากันแล้ว นำมาบวกกันได้ทันที!</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const num1Input = document.getElementById('num-1');
+        const den1Input = document.getElementById('den-1');
+        const num2Input = document.getElementById('num-2');
+        const den2Input = document.getElementById('den-2');
+        const toggleNumbers = document.getElementById('toggle-numbers');
+
+        function gcd(a, b) {
+            return b === 0 ? a : gcd(b, a % b);
+        }
+
+        function updateApp() {
+            let n1 = parseInt(num1Input.value);
+            let d1 = parseInt(den1Input.value);
+            let n2 = parseInt(num2Input.value);
+            let d2 = parseInt(den2Input.value);
+
+            // ป้องกันเศษมากกว่าส่วน
+            if (n1 > d1) { n1 = d1; num1Input.value = n1; }
+            if (n2 > d2) { n2 = d2; num2Input.value = n2; }
+
+            document.getElementById('val-num-1').innerText = n1;
+            document.getElementById('val-den-1').innerText = d1;
+            document.getElementById('label-fraction-1').innerText = `${n1}/${d1}`;
+            document.getElementById('badge-frac-1').innerText = `${n1}/${d1}`;
+            document.getElementById('desc-1').innerText = `แบ่งเป็น ${d1} ช่องแนวตั้ง ระบายสี ${n1} ช่อง`;
+
+            document.getElementById('val-num-2').innerText = n2;
+            document.getElementById('val-den-2').innerText = d2;
+            document.getElementById('label-fraction-2').innerText = `${n2}/${d2}`;
+            document.getElementById('badge-frac-2').innerText = `${n2}/${d2}`;
+            document.getElementById('desc-2').innerText = `แบ่งเป็น ${d2} ช่องแนวนอน ระบายสี ${n2} ช่อง`;
+
+            const showNum = toggleNumbers.checked;
+
+            // Render แผ่นที่ 1 (แนวตั้ง)
+            const c1 = document.getElementById('container-1');
+            c1.innerHTML = '';
+            for (let i = 0; i < d1; i++) {
+                const col = document.createElement('div');
+                col.className = `h-full flex-1 border-r border-slate-700 last:border-r-0 flex flex-col items-center justify-center text-xs font-bold transition-all ${i < n1 ? 'bg-rose-100 text-rose-700' : 'bg-white text-slate-400'}`;
+                if (i < n1) col.style.backgroundColor = '#ffe4e6';
+                if (showNum) col.innerText = i + 1;
+                c1.appendChild(col);
+            }
+
+            // Render แผ่นที่ 2 (แนวนอน)
+            const c2 = document.getElementById('container-2');
+            c2.innerHTML = '';
+            for (let i = 0; i < d2; i++) {
+                const row = document.createElement('div');
+                row.className = `w-full flex-1 border-b border-slate-700 last:border-b-0 flex items-center justify-center text-xs font-bold transition-all ${i < n2 ? 'bg-blue-100 text-blue-700' : 'bg-white text-slate-400'}`;
+                if (i < n2) row.style.backgroundColor = '#dbeafe';
+                if (showNum) row.innerText = i + 1;
+                c2.appendChild(row);
+            }
+
+            // Render แผ่นซ้อนทับ (Grid d2 แถว x d1 คอลัมน์)
+            const cOverlay = document.getElementById('container-overlay');
+            cOverlay.innerHTML = '';
+            cOverlay.style.display = 'grid';
+            cOverlay.style.gridTemplateColumns = `repeat(${d1}, minmax(0, 1fr))`;
+            cOverlay.style.gridTemplateRows = `repeat(${d2}, minmax(0, 1fr))`;
+
+            let overlapCount = 0;
+            let totalCells = d1 * d2;
+
+            for (let r = 0; r < d2; r++) {
+                for (let c = 0; c < d1; c++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'border border-slate-400/60 flex items-center justify-center text-[10px] font-bold transition-all';
+                    
+                    const isColColored = c < n1;
+                    const isRowColored = r < n2;
+
+                    if (isColColored && isRowColored) {
+                        cell.style.backgroundColor = '#c084fc'; // ม่วงเข้ม (ทับซ้อน)
+                        cell.className += ' text-white';
+                        overlapCount++;
+                    } else if (isColColored) {
+                        cell.style.backgroundColor = '#ffe4e6'; // ชมพู
+                        cell.className += ' text-rose-600';
+                    } else if (isRowColored) {
+                        cell.style.backgroundColor = '#dbeafe'; // ฟ้า
+                        cell.className += ' text-blue-600';
+                    } else {
+                        cell.style.backgroundColor = '#ffffff';
+                        cell.className += ' text-slate-300';
+                    }
+
+                    if (showNum) {
+                        cell.innerText = `${r * d1 + c + 1}`;
+                    }
+                    cOverlay.appendChild(cell);
+                }
+            }
+
+            document.getElementById('total-grid-cells').innerText = totalCells;
+            document.getElementById('total-overlap-cells').innerText = overlapCount;
+
+            // Mathematical Breakdown คำนวณค่าจริง
+            let commonDenom = d1 * d2;
+            let newNum1 = n1 * d2;
+            let newNum2 = n2 * d1;
+            let sumNum = newNum1 + newNum2;
+
+            document.getElementById('breakdown-1').innerText = `${n1}/${d1} = (${n1}×${d2}) / (${d1}×${d2}) = ${newNum1}/${commonDenom}`;
+            document.getElementById('breakdown-desc-1').innerText = `ถูกแบ่งย่อยด้วยเส้นแนวนอน ${d2} เส้น`;
+
+            document.getElementById('breakdown-2').innerText = `${n2}/${d2} = (${n2}×${d1}) / (${d2}×${d1}) = ${newNum2}/${commonDenom}`;
+            document.getElementById('breakdown-desc-2').innerText = `ถูกแบ่งย่อยด้วยเส้นแนวตั้ง ${d1} เส้น`;
+
+            // ตัดทอนอย่างง่าย (ถ้าทำได้)
+            let g = gcd(sumNum, commonDenom);
+            let simpNum = sumNum / g;
+            let simpDen = commonDenom / g;
+            let simpText = (simpDen !== commonDenom) ? ` = ${simpNum}/${simpDen}` : '';
+
+            document.getElementById('breakdown-3').innerText = `${newNum1}/${commonDenom} + ${newNum2}/${commonDenom} = ${sumNum}/${commonDenom}${simpText}`;
+        }
+
+        num1Input.addEventListener('input', updateApp);
+        den1Input.addEventListener('input', updateApp);
+        num2Input.addEventListener('input', updateApp);
+        den2Input.addEventListener('input', updateApp);
+        toggleNumbers.addEventListener('change', updateApp);
+
+        // รันครั้งแรก
+        updateApp();
+    </script>
+</body>
+</html>
